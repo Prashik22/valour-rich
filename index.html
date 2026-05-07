@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valour Rich | Premium Clothing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1A1A1A;
+      --secondary: #C9A962;
+      --accent: #F5F5F5;
+      --bg: #FAFAFA;
+      --text-primary: #1A1A1A;
+      --text-secondary: #666666;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Raleway', sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 20px 0;
+      transition: all 0.4s ease;
+    }
+
+    header.scrolled {
+      background: var(--primary);
+      padding: 15px 0;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      color: white;
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      position: relative;
+      padding-bottom: 5px;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--secondary);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* Hero */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=1920&q=80') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-content {
+      color: white;
+      max-width: 800px;
+      padding: 0 24px;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(48px, 10vw, 100px);
+      letter-spacing: 0.2em;
+      margin-bottom: 20px;
+      line-height: 1.1;
+    }
+
+    .hero-content h1 span {
+      color: var(--secondary);
+    }
+
+    .hero-content p {
+      font-size: 18px;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      margin-bottom: 50px;
+      opacity: 0.9;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 18px 50px;
+      background: var(--secondary);
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: white;
+      transform: translateY(-3px);
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      animation: bounce 2s infinite;
+    }
+
+    .scroll-indicator span {
+      display: block;
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      margin-bottom: 10px;
+      opacity: 0.7;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+      40% { transform: translateX(-50%) translateY(-10px); }
+      60% { transform: translateX(-50%) translateY(-5px); }
+    }
+
+    /* Collections */
+    .collections {
+      padding: 120px 0;
+      background: var(--bg);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(36px, 5vw, 56px);
+      letter-spacing: 0.1em;
+      margin-bottom: 15px;
+    }
+
+    .section-header p {
+      color: var(--text-secondary);
+      font-size: 15px;
+      letter-spacing: 0.1em;
+    }
+
+    .gold-line {
+      width: 60px;
+      height: 2px;
+      background: var(--secondary);
+      margin: 20px auto;
+    }
+
+    .collection-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .collection-card {
+      position: relative;
+      height: 450px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .collection-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .collection-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .collection-card .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(transparent 50%, rgba(0,0,0,0.8));
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 40px;
+      transition: all 0.3s ease;
+    }
+
+    .collection-card:hover .overlay {
+      border: 2px solid var(--secondary);
+    }
+
+    .collection-card h3 {
+      color: white;
+      font-size: 28px;
+      letter-spacing: 0.2em;
+    }
+
+    .collection-card .arrow {
+      color: var(--secondary);
+      font-size: 24px;
+      margin-top: 10px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+    }
+
+    .collection-card:hover .arrow {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* About */
+    .about {
+      padding: 120px 0;
+      background: white;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-image {
+      position: relative;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 600px;
+      object-fit: cover;
+    }
+
+    .about-image::before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      right: 20px;
+      bottom: 20px;
+      border: 2px solid var(--secondary);
+      z-index: -1;
+    }
+
+    .about-content h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      letter-spacing: 0.1em;
+      margin-bottom: 30px;
+    }
+
+    .about-content p {
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+
+    .about-content .gold-line {
+      margin: 30px 0;
+      width: 80px;
+    }
+
+    .signature {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-style: italic;
+      color: var(--secondary);
+      margin-top: 30px;
+    }
+
+    /* Newsletter */
+    .newsletter {
+      padding: 100px 0;
+      background: var(--primary);
+      text-align: center;
+    }
+
+    .newsletter h2 {
+      color: white;
+      font-size: clamp(28px, 4vw, 42px);
+      letter-spacing: 0.1em;
+      margin-bottom: 15px;
+    }
+
+    .newsletter p {
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 40px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      max-width: 500px;
+      margin: 0 auto;
+      gap: 15px;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      padding: 18px 25px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: transparent;
+      color: white;
+      font-family: 'Raleway', sans-serif;
+      font-size: 14px;
+    }
+
+    .newsletter-form input::placeholder {
+      color: rgba(255,255,255,0.5);
+    }
+
+    .newsletter-form input:focus {
+      outline: none;
+      border-color: var(--secondary);
+    }
+
+    .newsletter-form .btn {
+      padding: 18px 35px;
+    }
+
+    /* Footer */
+    footer {
+      padding: 60px 0 30px;
+      background: var(--primary);
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      color: white;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .social-links a {
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background: var(--secondary);
+      border-color: var(--secondary);
+      color: var(--primary);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-bottom p {
+      color: rgba(255,255,255,0.5);
+      font-size: 13px;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .collection-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-grid {
+        gap: 50px;
+      }
+
+      .about-image img {
+        height: 500px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .mobile-toggle {
+        display: block;
+      }
+
+      nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: var(--primary);
+        flex-direction: column;
+        justify-content: center;
+        gap: 30px;
+        transition: right 0.3s ease;
+      }
+
+      nav.active {
+        right: 0;
+      }
+
+      .collection-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .collection-card {
+        height: 350px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .about-image {
+        order: -1;
+      }
+
+      .about-image img {
+        height: 400px;
+      }
+
+      .about-image::before {
+        display: none;
+      }
+
+      .newsletter-form {
+        flex-direction: column;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+      }
+    }
+
+    /* Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header id="header">
+    <div class="container">
+      <a href="#" class="logo">VALOUR RICH</a>
+      <button class="mobile-toggle" id="mobileToggle">☰</button>
+      <nav id="nav">
+        <a href="#collections">Collections</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>VALOUR <span>RICH</span></h1>
+      <p>Where Elegance Meets Legacy</p>
+      <a href="#collections" class="btn">Explore Collection</a>
+    </div>
+    <div class="scroll-indicator">
+      <span>SCROLL</span>
+      ↓
+    </div>
+  </section>
+
+  <!-- Collections -->
+  <section class="collections" id="collections">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Our Collections</h2>
+        <div class="gold-line"></div>
+        <p>Discover timeless pieces crafted for the distinguished</p>
+      </div>
+      <div class="collection-grid">
+        <div class="collection-card fade-in">
+          <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=800&q=80" alt="Suits">
+          <div class="overlay">
+            <div>
+              <h3>SUITS</h3>
+              <div class="arrow">→</div>
+            </div>
+          </div>
+        </div>
+        <div class="collection-card fade-in">
+          <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=800&q=80" alt="Outerwear">
+          <div class="overlay">
+            <div>
+              <h3>OUTERWEAR</h3>
+              <div class="arrow">→</div>
+            </div>
+          </div>
+        </div>
+        <div class="collection-card fade-in">
+          <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=80" alt="Accessories">
+          <div class="overlay">
+            <div>
+              <h3>ACCESSORIES</h3>
+              <div class="arrow">→</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image fade-in">
+          <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&q=80" alt="Valour Rich Brand">
+        </div>
+        <div class="about-content fade-in">
+          <h2>Our Legacy</h2>
+          <div class="gold-line"></div>
+          <p>Valour Rich was born from a passion for timeless elegance and uncompromising quality. Since our inception, we have dedicated ourselves to creating garments that not only look exceptional but feel extraordinary.</p>
+          <p>Each piece in our collection is meticulously crafted using the finest materials, sourced from the world's most reputable suppliers. Our commitment to excellence extends beyond fabric—it's woven into every stitch, every cut, every detail.</p>
+          <p>We believe that true luxury lies in the details. The perfect drape, the impeccable finish, the subtle luxury that speaks without shouting. This is the Valour Rich standard.</p>
+          <p class="signature">— The Valour Rich Family</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter" id="contact">
+    <div class="container">
+      <h2>Stay Connected</h2>
+      <p>Be the first to know about new collections and exclusive offers</p>
+      <form class="newsletter-form" onsubmit="return false;">
+        <input type="email" placeholder="Enter your email address">
+        <button type="submit" class="btn">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">VALOUR RICH</div>
+        <div class="social-links">
+          <a href="#" aria-label="Instagram">📷</a>
+          <a href="#" aria-label="Facebook">📘</a>
+          <a href="#" aria-label="Twitter">🐦</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Valour Rich. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Header scroll effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Mobile menu toggle
+    const mobileToggle = document.getElementById('mobileToggle');
+    const nav = document.getElementById('nav');
+
+    mobileToggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+      mobileToggle.textContent = nav.classList.contains('active') ? '✕' : '☰';
+    });
+
+    // Close mobile menu when clicking a link
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('active');
+        mobileToggle.textContent = '☰';
+      });
+    });
+
+    // Scroll animations
+    const fadeElements = document.querySelectorAll('.fade-in');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    fadeElements.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
